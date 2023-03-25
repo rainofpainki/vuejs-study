@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/app.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous" />
+  <title>Vue.js 애완용품샵</title>
+</head>
+<body>
+    <div id="app">
+      <main>
+        <div class="row product">
+          <div class="col-md-3">
+            <figure>
+              <img v-bind:src="product.image">
+            </figure>
+          </div>
+          <div class="col-md-9">
+            <h1 v-text="product.title"></h1>
+            <p v-html="product.description"></p>
+            <p v-text="product.price" class="price"></p>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="assets/js/product-data.js"></script>
+</body>
+</html>
