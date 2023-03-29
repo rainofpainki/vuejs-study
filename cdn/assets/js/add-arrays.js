@@ -9,6 +9,7 @@ var webstore = new Vue({
       description: "당신의 고양이를 위한 <strong>유기농</strong> 사료입니다.",
       price: 150000000,
       image: "assets/images/product-fullsize.png",
+      availableInventory: 5,
     },
     cart: [],
   },
@@ -40,6 +41,14 @@ var webstore = new Vue({
   methods: {
     addToCart: function () {
       this.cart.push(this.product.id);
+    },
+  },
+  computed: {
+    cartItemCount: function () {
+      return this.cart.length || "";
+    },
+    canAddToCart: function () {
+      return this.product.availableInventory > this.cartItemCount;
     },
   },
 });

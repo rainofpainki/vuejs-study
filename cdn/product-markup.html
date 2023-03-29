@@ -12,7 +12,14 @@
 <body>
     <div id="app">
       <header>
-        <h1 v-text="sitename"></h1>
+        <div class="navbar navbar-default">
+          <p class="pull-right">
+            <span class="glyphicon glyphicon-shopping-cart">
+              {{cartItemCount}}
+            </span>
+          </p>
+          <h1 v-text="sitename"></h1>
+        </div>
       </header>
       <main>
         <div class="row product">
@@ -31,7 +38,7 @@
             </p>
           </div>
         </div>
-        <button class="btn btn-primary btn-lg" v-on:click="addToCart">장바구니 담기</button>
+        <button class="btn btn-primary btn-lg" v-on:click="addToCart" v-show="canAddToCart">장바구니 담기</button>
       </main>
     </div>
     <script src="assets/js/add-arrays.js"></script>
