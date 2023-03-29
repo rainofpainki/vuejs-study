@@ -5,7 +5,7 @@ var webstore = new Vue({
     sitename: "Vue.js 애완용품샵",
     product: {
       id: 1001,
-      title: "고양이 사료, 25파운드",
+      title: "Feed for your cat",
       description: "당신의 고양이를 위한 <strong>유기농</strong> 사료입니다.",
       price: 150000000,
       image: "assets/images/product-fullsize.png",
@@ -31,6 +31,9 @@ var webstore = new Vue({
       } else {
         return "$" + (price / 100).toFixed(2); // $1,000 미만이라면 형식화된 십진수 값으로 반환
       }
+    },
+    upperTitle: function (title) {
+      return title.toUpperCase();
     },
   },
 });
