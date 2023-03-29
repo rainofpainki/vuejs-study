@@ -44,10 +44,82 @@
           </div>
         </div>
         <div v-else>
-          
+          <div class="col-md-6">
+            <strong>이름:</strong>
+            <input v-model="order.firstName" class="form-control" />
+          </div>
+          <div class="col-md-6">
+            <strong>성:</strong>
+            <input v-model="order.lastName" class="form-control" />
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <strong>주소:</strong>
+            </div>
+            <div class="col-md-12">
+              <input v-model="order.address" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <strong>도시:</strong>
+            </div>
+            <div class="col-md-12">
+              <input v-model="order.city" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-2">
+              <strong>주:</strong>
+              <select v-model="order.state" class="form-control">
+                <option disabled value=""></option>
+                <option>AL</option>
+                <option>AR</option>
+                <option>CA</option>
+                <option>NV</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+              <strong>우편번호:</strong>
+              <input v-model="order.zip" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-6 boxes">
+              <input type="checkbox" id="gift" value="true" v-model="order.gift">
+              <label for="gift">선물로 보내기</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-6 boxes">
+              <input type="radio" id="home" value="Home" v-model="order.method">
+              <label for="home">자택</label>
+              <input type="radio" id="business" value="Business" v-model="order.method">
+              <label for="business">직장</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-6">
+              <button type="submit" class="btn btn-primary submit" v-on:click="submitForm">주문하기</button>
+            </div>
+          </div>
+          <div class="col-md-12 verify">
+            <pre>
+              이름: {{order.firstName}}
+              성: {{order.lastName}}
+              주소: {{order.address}}
+              도시: {{order.city}}
+              우편번호: {{order.zip}}
+              주: {{order.state}}
+              주소지: {{order.method}}
+              선물: {{order.gift}}
+            </pre>
+          </div>
         </div>
       </main>
     </div>
-    <script src="assets/js/add-arrays.js"></script>
+    <script src="assets/js/data-property.js"></script>
 </body>
 </html>
