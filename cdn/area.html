@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+  <title>넓이 계산</title>
+</head>
+<body>
+    <div id="app">
+      <p>
+        넓이: {{area}}
+      </p>
+      <p>
+        <button v-on:click="length += 1">세로 추가</button>
+        <button v-on:click="width += 1">가로 추가</button>
+      </p>
+    </div>
+    <script src="assets/js/computed-rect.js"></script>
+</body>
+</html>
