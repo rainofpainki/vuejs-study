@@ -46,18 +46,18 @@
         <div v-else>
           <div class="col-md-6">
             <strong>이름:</strong>
-            <input v-model="order.firstName" class="form-control" />
+            <input v-model.trim="order.firstName" class="form-control" />
           </div>
           <div class="col-md-6">
             <strong>성:</strong>
-            <input v-model="order.lastName" class="form-control" />
+            <input v-model.trim="order.lastName" class="form-control" />
           </div>
           <div class="form-group">
             <div class="col-md-12">
               <strong>주소:</strong>
             </div>
             <div class="col-md-12">
-              <input v-model="order.address" class="form-control" />
+              <input v-model.trim="order.address" class="form-control" />
             </div>
           </div>
           <div class="form-group">
@@ -65,7 +65,7 @@
               <strong>도시:</strong>
             </div>
             <div class="col-md-12">
-              <input v-model="order.city" class="form-control" />
+              <input v-model.trim="order.city" class="form-control" />
             </div>
           </div>
           <div class="form-group">
@@ -73,30 +73,27 @@
               <strong>주:</strong>
               <select v-model="order.state" class="form-control">
                 <option disabled value=""></option>
-                <option>AL</option>
-                <option>AR</option>
-                <option>CA</option>
-                <option>NV</option>
+                <option v-for="(state, key) in states" v-bind:value="state">{{key}}</option>
               </select>
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-4">
               <strong>우편번호:</strong>
-              <input v-model="order.zip" class="form-control" />
+              <input v-model.number="order.zip" class="form-control" type="number" />
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-6 boxes">
-              <input type="checkbox" id="gift" value="true" v-model="order.gift">
+              <input type="checkbox" id="gift" value="true" v-bind:true-value="order.sendGift" v-bind:false-value="order.dontSendGift" v-model="order.gift">
               <label for="gift">선물로 보내기</label>
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-6 boxes">
-              <input type="radio" id="home" value="Home" v-model="order.method">
+              <input type="radio" id="home" v-bind:value="order.home" v-model="order.method">
               <label for="home">자택</label>
-              <input type="radio" id="business" value="Business" v-model="order.method">
+              <input type="radio" id="business" v-bind:value="order.business" v-model="order.method">
               <label for="business">직장</label>
             </div>
           </div>
@@ -111,7 +108,7 @@
               성: {{order.lastName}}
               주소: {{order.address}}
               도시: {{order.city}}
-              우편번호: {{order.zip}}
+              우편번호: {{typeof(order.zip)}}
               주: {{order.state}}
               주소지: {{order.method}}
               선물: {{order.gift}}
