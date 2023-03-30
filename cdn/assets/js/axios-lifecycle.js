@@ -79,14 +79,28 @@ var webstore = new Vue({
     },
   },
   computed: {
-    cartItemCount: function () {
+    cartItemCount() {
       return this.cart.length || "";
+    },
+    sortedProducts() {
+      if (this.products.length > 0) {
+        let productsArray = this.products.slice(0);
+        function compare(a, b) {
+          if (a.title.toLowerCase() < b.title.toLowerCase()) {
+            return -1;
+          }
+          if (a.title.toLowerCase() > b.title.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        }
+        return productsArray.sort(compare);
+      }
     },
   },
   created: function () {
     axios.get("./assets/products.json").then((response) => {
       this.products = response.data.products;
-      console.log(this.products);
     });
   },
 });
