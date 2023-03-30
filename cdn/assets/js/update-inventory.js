@@ -10,6 +10,7 @@ var webstore = new Vue({
       price: 150000000,
       image: "assets/images/product-fullsize.png",
       availableInventory: 10,
+      rating: 3,
     },
     cart: [],
     showProduct: true,
@@ -68,6 +69,9 @@ var webstore = new Vue({
     },
     submitForm() {
       alert("제출 완료");
+    },
+    checkRating(n) {
+      return this.product.rating - n >= 0;
     },
   },
   computed: {
