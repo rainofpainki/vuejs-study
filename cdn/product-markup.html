@@ -41,6 +41,9 @@
             </div>
             <button class="btn btn-primary btn-lg" v-on:click="addToCart" v-if="canAddToCart">장바구니 담기</button>
             <button disabled="true" class="btn btn-primary btn-lg" v-else>장바구니 담기</button>
+            <span class="inventory-message" v-if="product.availableInventory - cartItemCount < 5">
+              {{product.availableInventory - cartItemCount}} 남았습니다!
+            </span>
           </div>
         </div>
         <div v-else>
@@ -117,6 +120,6 @@
         </div>
       </main>
     </div>
-    <script src="assets/js/data-property.js"></script>
+    <script src="assets/js/update-inventory.js"></script>
 </body>
 </html>
