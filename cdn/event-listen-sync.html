@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      {{counter}}<br />
+      <!-- 부모 컴포넌트에서 카운터를 증가시키는 버튼-->
+      <button v-on:click="incrementCounter">카운터 증가</button>
+      <!-- increment-me 이벤트를 incrementCounter로 전달하게 설정-->
+      <my-component :my-counter.sync="counter"></my-component>
+    </div>
+    <script>
+      const component = {
+        // childCrementCounter 메서드를 호출하는 컴포넌트 버튼
+        template: `<div>
+          <button v-on:click="childIncrementCounter">자식으로부터 증가</button>
+          </div>`,
+        methods: {
+          childIncrementCounter() {
+            this.$emit('update:myCounter', this.myCounter + 1); // increment-me 이벤트 방출
+          }
+        },
+        props: ['my-counter']
+      };
+
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            counter: 0
+          }
+        },
+        methods: {
+          // 카운터를 1만큼 증가시킨다.
+          incrementCounter() {
+            this.counter++;
+          }
+        },
+        components: {'myComponent': component}
+      });
+    </script>
+</body>
+</html>
