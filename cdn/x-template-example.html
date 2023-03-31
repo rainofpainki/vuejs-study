@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <my-component />
+    </div>
+    <script type="text/x-template" id="my-component">
+      <p>
+        안녕, x-template으로부터, 안녕
+      </p>
+    </script>
+    <script>
+      const component = {
+        template: '#my-component'
+      };
+
+      new Vue({
+        el: "#app",
+        components: {'myComponent': component},
+      });
+    </script>
+</body>
+</html>
