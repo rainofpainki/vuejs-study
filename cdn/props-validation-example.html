@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <my-component :num="myNumber" :str="passedString" :even="myNumber" :obj="passedObject"></my-component>
+    </div>
+    <script>
+      const component = {
+        template: '<div>숫자: {{num}}<br />문자열: {{str}}<br />짝수?: {{even}}<br />객체: {{obj.message}}</div>',
+        props: {
+          num: {
+            type: Number,
+            required: true // 반드시 있어야 한다.
+          },
+          str: {
+            type: String,
+            default: "안녕" // 기본값을 포함한다.
+          },
+          obj: {
+            type: Object,
+            default: () => { // 기본 객체를 포함한다.
+              return { message: '객체입니다.' } 
+            }
+          },
+          even: {
+            validator: (value) => { // 커스텀 검사자를 포함한다.
+              return (value % 2 === 0);
+            }
+          }
+        }
+      };
+
+      new Vue({
+        el: "#app",
+        components: {'myComponent': component},
+        data() {
+          return {
+            passedString: '안녕, 부모로부터!',
+            myNumber: 53,
+            passedObject: {message: '넘겨준 객체'}
+          }
+        }
+      });
+    </script>
+</body>
+</html>
