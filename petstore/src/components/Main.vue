@@ -50,11 +50,11 @@
   
   <script>
   import MyHeader from './Header.vue';
+  import { mapGetters } from 'vuex';
   export default {
     name: 'imain',
     data() {
       return {
-        products: [],
         cart: []
       }
     },
@@ -80,6 +80,9 @@
       }
     },
     computed: {
+      ...mapGetters([
+        'products'
+      ]),
       cartItemCount() {
         return this.cart.length || '';
       },
@@ -117,10 +120,7 @@
       }
     },
     created: function() {
-      axios.get('/static/products.json').then(response => {
-        this.products = response.data.products;
-        console.log(this.products);
-      });
+      this.$store.dispatch('initStore'); // Vuex 저장소를 초기화하는 코드를 디스패치한다.
     }
   }
   </script>
