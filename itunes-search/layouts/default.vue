@@ -1,8 +1,20 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+  <section class="container">
+    <div>
+      <ToolBar/>
+      <nuxt/>
+    </div>
+  </section>
 </template>
+
+<script>
+import ToolBar from '~/components/Toolbar.vue';
+export default {
+  components: {
+    ToolBar
+  }
+}
+</script>
 
 <style>
 html {
@@ -50,4 +62,3 @@ html {
   background-color: #35495e;
 }
 </style>
-
