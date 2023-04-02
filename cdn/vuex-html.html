@@ -20,8 +20,23 @@
           count: 0
         },
         mutations: {
-          increment(state) {
-              state.count++;
+          increment(state, payload) {
+              state.count += payload;
+          }
+        },
+        getters: {
+          msg(state) {
+            return state.msg.toUpperCase();
+          },
+          count(state) {
+            return state.count;
+          }
+        },
+        actions: { // 비동기 연산을 수행한다. mutation은 동기적임.
+          increment(context, payload) { // increment 함수는 컨텍스트와 페이로드를 받는다.
+            setTimeout(function() {
+              context.commit('increment', payload); // increment 뮤테이션을 트리거해서 페이로드를 전달한다.
+            }, 2000);
           }
         }
       });
@@ -44,7 +59,7 @@
         },
         methods: {
           increment() {
-            store.commit('increment');
+            store.dispatch('increment', 10); // dispatch 를 통하여 action을 실행한다.
           }
         }
       });
