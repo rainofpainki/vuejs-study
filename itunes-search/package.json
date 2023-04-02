@@ -1,7 +1,7 @@
 {
-  "name": "nuxt-js",
+  "name": "itunes-search",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
+  "description": "iTunes search project",
   "author": "Sunha Ryu <rainofpainki@naver.com>",
   "private": true,
   "scripts": {

@@ -1,6 +1,6 @@
-# nuxt-js
+# itunes-search
 
-> Nuxt.js project
+> iTunes search project
 
 ## Build Setup
 

@@ -3,10 +3,10 @@
     <div>
       <app-logo/>
       <h1 class="title">
-        nuxt-js
+        itunes-search
       </h1>
       <h2 class="subtitle">
-        Nuxt.js project
+        iTunes search project
       </h2>
       <div class="links">
         <a
